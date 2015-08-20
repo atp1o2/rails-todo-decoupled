@@ -3,15 +3,28 @@
 <head>
   <title>Decoupled Todo List</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
   <script type="text/javascript" src="application.js"></script>
+  <link rel="stylesheet" href="index.css">
 </head>
-<body>
-  <header>Todo-List!</header>
 
-  <ol id="list">
+<body>
+<div id="container">
+
+  <header>Todo-List!</header>
+  <ol class="debug" id="list">
     <!-- append todos here -->
   </ol>
 
+  <button id="add_button">Add</button>
+
+  <div id="add_form"></div>
+
+<form id="note_form">
+  <input type="text" name="body" placeholder="Note">
+  <input type="submit" value="Post-it!">
+</form>
+
+
+</div>
 </body>
 </html>
