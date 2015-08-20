@@ -1,6 +1,6 @@
 $(document).ready(function(){
   landingPage();
-  // addButton();
+  addButton();
   submitForm();
 })
 
@@ -29,15 +29,15 @@ var addButton = function(){
     $(this).hide()
     $("#add_form").load("_form.html")
   })
-  submitForm();
 }
 
 
+
 var submitForm = function(){
-  $("#note_form").on("submit", function(event){
+  $("#add_form").on("submit", function(event){
     (event).preventDefault();
-    // $("#add_button").show();
-    var data = $(this).serialize();
+    $("#add_button").show();
+    var data = $("#note_form").serialize();
 
     $.ajax({
       url: "http://localhost:3000/notes",
@@ -50,6 +50,7 @@ var submitForm = function(){
       $("#list").append("<li>" + response.body + "</li>")
 
     }).fail(function(error){})
+    $("#note_form").remove()
   })
 }
 
