@@ -1,10 +1,11 @@
 $(document).ready(function(){
-  landingPage();
+  // landingPage();
+  listTemplate();
   addButton();
   submitForm();
 })
 
-
+// loads all the notes
 var landingPage = function(){
   $.ajax({
     url: "http://localhost:3000/notes"
@@ -32,7 +33,7 @@ var addButton = function(){
 }
 
 
-
+// submits comment and hides form
 var submitForm = function(){
   $("#add_form").on("submit", function(event){
     (event).preventDefault();
@@ -46,13 +47,35 @@ var submitForm = function(){
       data: data
 
     }).done(function(response){
-      console.log("added note?!")
       $("#list").append("<li>" + response.body + "</li>")
 
     }).fail(function(error){})
     $("#note_form").remove()
   })
 }
+
+
+
+// Handlebars
+var listTemplate = function(){
+  $.ajax({
+    url: "http://localhost:3000/notes"
+  }).done(function(response){
+    var source = $("#list_template").html();
+    var template = Handlebars.compile(source)
+    $("#list").append(template(response))
+  })
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

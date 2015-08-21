@@ -14,7 +14,8 @@ class NotesController < ApplicationController
     render json: @note
   end
 
-
+  def destroy
+  end
 
 
 end

@@ -3,20 +3,31 @@
 <head>
   <title>Decoupled Todo List</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="application.js"></script>
   <link rel="stylesheet" href="index.css">
+
+
+<!-- HandleBars.js -->
+<script type="text/javascript" src="handlebars.js"></script>
+<!-- application js loads handlebars, so it has to be last -->
+<script type="text/javascript" src="application.js"></script>
 </head>
+
 
 <body>
 <div id="container">
-
   <header>Todo-List!</header>
-  <ol class="debug" id="list">
-    <!-- append todos here -->
+
+<!-- Handlebar -->
+  <ol id="list">
+    <script id="list_template" type="text/x-handlebars-template">
+      {{#each this}}
+        <li class="the_task">{{body}}</li>
+      {{/each}}
+    </script>
   </ol>
 
-  <button id="add_button">Add</button>
 
+  <button id="add_button">Add</button>
   <div id="add_form"></div>
 
 
